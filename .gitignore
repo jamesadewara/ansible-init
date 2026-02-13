@@ -1,0 +1,9 @@
+# AWS Private Keys
+*.pem
+*.key
+
+# Ansible files
+.ansible/
+
+# Vagrant files
+.vagrant/
