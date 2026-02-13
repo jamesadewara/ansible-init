@@ -1,0 +1,19 @@
+- name: System Update and File Creation
+  hosts: aws_ec2_servers # all
+  become: yes  # Needed for system updates and creating folders in /home
+  tasks:
+    - name: Update apt cache and upgrade all packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Ensure the DEMO directory exists
+      file:
+        path: /home/DEMO
+        state: directory
+        mode: '0755'
+
+    - name: Create connected.txt with content "Why Ansible?\n"
+      copy:
+        content: "Why Ansible?"
+        dest: /home/DEMO/connected.txt
